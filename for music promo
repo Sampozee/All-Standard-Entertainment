@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Sampozee Music</title>
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0f172a;color:white}
+
+/* NAV */
+header{background:#020617;padding:20px;position:sticky;top:0;z-index:1000}
+nav{display:flex;justify-content:space-between}
+nav h1{color:#38bdf8}
+nav ul{display:flex;gap:20px;list-style:none}
+nav a{color:white;text-decoration:none}
+
+/* HERO SLIDER */
+.hero{position:relative;height:400px;overflow:hidden}
+.slide{position:absolute;width:100%;height:100%;opacity:0;transition:1s}
+.slide img{width:100%;height:100%;object-fit:cover}
+.active{opacity:1}
+
+/* GENERAL */
+.container{padding:40px 20px;max-width:1100px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#1e293b;padding:20px;border-radius:15px;transition:.3s}
+.card:hover{transform:translateY(-10px)}
+.card img{width:100%;border-radius:10px;cursor:pointer}
+
+button{background:#38bdf8;border:none;padding:10px;border-radius:5px;margin-top:10px;cursor:pointer}
+
+/* LIGHTBOX */
+.lightbox{
+ position:fixed;top:0;left:0;width:100%;height:100%;
+ background:rgba(0,0,0,0.9);
+ display:none;justify-content:center;align-items:center
+}
+.lightbox img{max-width:90%;max-height:90%}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.gallery img{width:100%;border-radius:10px;cursor:pointer}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;background:#020617;margin-top:40px}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h1>King Sampozee</h1>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#music">Music</a></li>
+<li><a href="#gallery">Gallery</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- 🔥 HERO SLIDER -->
+<section class="hero">
+<div class="slide active"><img src="jpg.jpg"></div>
+<div class="slide"><img src="IMG_20201231_145834_9.jpg"></div>
+<div class="slide"><img src="107531194_114990906941409_8879244357777342353_n.jpg"></div>
+</section>
+
+<!-- MUSIC -->
+<section id="music" class="container">
+<h2>Music</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="IMG_20201231_145834_9.jpg" onclick="openImage(this.src)">
+<h3>Street Vibes</h3>
+<audio controls>
+<source src="sampozee_Holy_RightMan.mp3">
+</audio>
+<button onclick="downloadSong('sampozee_Holy_RightMan.mp3')">Download</button>
+</div>
+
+<div class="card">
+<img src="107531194_114990906941409_8879244357777342353_n.jpg" onclick="openImage(this.src)">
+<h3>Dream Chaser</h3>
+<audio controls>
+<source src="music/song2.mp3">
+</audio>
+<button onclick="downloadSong('music/song2.mp3')">Download</button>
+</div>
+
+</div>
+</section>
+
+<!-- 🔥 GALLERY -->
+<section id="gallery" class="container">
+<h2>Artist Gallery</h2>
+
+<div class="gallery">
+<img src="IMG_20201231_145834_9.jpg" onclick="openImage(this.src)">
+<img src="107531194_114990906941409_8879244357777342353_n.jpg" onclick="openImage(this.src)">
+<img src="jpg.jpg" onclick="openImage(this.src)">
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeImage()">
+<img id="lightImg">
+</div>
+
+<footer>
+<p>© 2026 King Sampozee</p>
+</footer>
+
+<script>
+
+/* SLIDER */
+let slides=document.querySelectorAll('.slide');
+let index=0;
+
+setInterval(()=>{
+ slides[index].classList.remove('active');
+ index=(index+1)%slides.length;
+ slides[index].classList.add('active');
+},3000);
+
+/* DOWNLOAD */
+function downloadSong(src){
+ let a=document.createElement('a');
+ a.href=src;
+ a.download='song';
+ a.click();
+}
+
+/* LIGHTBOX */
+function openImage(src){
+ document.getElementById('lightbox').style.display='flex';
+ document.getElementById('lightImg').src=src;
+}
+
+function closeImage(){
+ document.getElementById('lightbox').style.display='none';
+}
+
+</script>
+
+</body>
+</html>
