@@ -84,6 +84,15 @@ footer{text-align:center;padding:20px;background:#020617;margin-top:40px}
 </div>
 
 <div class="card">
+<img src="107531194_114990906941409_8879244357777342353_n.jpg" onclick="openImage(this.src)">
+<h3>Egwu - Chike ft Mohbad</h3>
+<audio controls>
+<source src="Chike_Ft_MohBad_-_Egwu.mp3" type="audio/mpeg">
+</audio>
+<button onclick="downloadSong('Chike_Ft_MohBad_-_Egwu.mp3')">Download</button>
+</div>
+
+<div class="card">
 <img src="IMG_20201231_145834_9.jpg" onclick="openImage(this.src)">
 <h3>Haterzz</h3>
 <audio controls>
